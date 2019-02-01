@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传页</title>
+</head>
+<!DOCTYPE HTML>
+<body>
+<h1>添加名剑</h1>
+<form th:action="@{/submit_form}" th:object="${sword}" method="post" enctype="multipart/form-data">
+    <p>名剑名称: <input type="text" th:field="*{name}"/></p>
+    <p>名剑简介:<br> <textarea rows="10" th:field="*{info}"></textarea></p>
+    <p>名剑来源:<input type="text" th:field="*{origin}"/></p>
+    <p>名剑图片: <input type="file" name="file"/></p>
+    <p><input type="submit" value="提交"/> <input type="reset" value="重置"/></p>
+</form>
+</body>
+</html>

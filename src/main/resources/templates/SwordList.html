@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloThymeleaf</title>
+    <link rel="stylesheet" href="../static/css/my.css">
+    <link rel="stylesheet" href="../static/css/animate.css">
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/vue2.5.16.min.js"></script>
+</head>
+<body>
+<div id="add"></div>
+<div id="root">
+    <h1 class="animated bounceInDown">名剑表</h1>
+    <ul>
+        <li class="animated bounceIn" v-for="(val, key, index) in imgData" :key="index">
+            <a href=""><img :src="val.imgurl" width="300"></a>
+            <p><a :href="val.imgurl">{{val.name}}</a>
+            <div class="bottom">{{val.origin}}</div>
+        </li>
+    </ul>
+</div>
+<script>
+    $('#add').click(function () {
+        window.location.href = "/add_form";//跳转
+    });
+
+    $.getJSON('http://localhost:8080/swords/findall', function (data) {
+            console.log(data);
+            new Vue({
+                el: "#root",//与id是box的元素绑定
+                data: {//数据
+                    imgData: data.data
+                }
+            });
+        }
+    );
+</script>
+</body>
+</html>

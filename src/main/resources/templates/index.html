@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloThymeleaf</title>
+    <link rel="stylesheet" href="../static/css/my.css">
+    <!--jquery.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../static/js/show.js"></script>
+</head>
+<body>
+<!--<h1 th:text="${replace_text}" >thymeleaf in spring boot</h1>-->
+<h1>Ajax</h1>
+
+<script>
+    $('h1').on('click', function () {
+        // postBody();
+        // postFindOne();
+        getall();
+    });
+
+
+    function getall() {
+        $.get('http://localhost:8080/swords/findAll', data => {
+            console.log(data);
+        });
+    }
+
+
+
+    function postFindOne() {
+        $.post('http://localhost:8080/swords/postFind', 'id=21', data => {
+            console.log(data);
+        });
+    }
+
+
+
+    function postBody() {
+        $.ajax({
+            type: "post",//请求类型
+            url: "http://localhost:8080/postWithBody",
+            contentType: "application/json;charset=UTF-8",//请求内容类型
+            data: JSON.stringify({name: "弑神", info: "氏封神之剑"}),//数据JOSN.stringify
+            // cache: true,//结果可被缓存
+            success: function (json) {
+                console.log(json);
+            }
+        });
+    }
+</script>
+</body>
+</html>

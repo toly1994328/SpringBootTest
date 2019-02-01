@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  thymeleaf:
+    cache: false
+  mvc:
+    static-path-pattern: /static/**
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///toly?useSSL=false
+    username: root
+    password: toly
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+
+name: black magic
+atk: 2500
+desc: "name:${name} And atk:${atk}"
+monster:
+  name: blue eyes white Dragon
+  atk: 3000
+
